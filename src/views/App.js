@@ -1,9 +1,15 @@
 import logo from "./logo.svg";
-import "./App.css";
+import "./App.scss";
+import MyComponent from "./Example/MyComponent";
 
-function App() {
+// 2 components: class component / function component ( function, arrow) 
+// JSX
+
+const App = () => {
   return (
     <div className="App">
+      {/* inject = nhúng */}
+
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>Hello world with React khánh nè he</p>
@@ -15,9 +21,10 @@ function App() {
         >
           Learn React
         </a>
+        <MyComponent />
       </header>
     </div>
   );
-}
+};
 
 export default App;
