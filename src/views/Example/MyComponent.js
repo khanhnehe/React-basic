@@ -13,6 +13,10 @@ class MyComponent extends React.Component {
     });
   };
 
+  handleOnClick = () => {
+    console.log("hit the button");
+    alert("click me");
+  };
   render() {
     // let name = "Khanh";
     // //dùng {} để sử dụng javascritp trong JSX html
@@ -29,6 +33,9 @@ class MyComponent extends React.Component {
           hello kanh ne he {this.state.name}
         </div>
         <div className="second">My address: {this.state.address}</div>
+        <div className="third">
+          <button onClick={() => this.handleOnClick()}>click</button>
+        </div>
       </>
     );
   }
