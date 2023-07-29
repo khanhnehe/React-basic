@@ -9,7 +9,7 @@ class MyComponent extends React.Component {
 
   handleOnChangeName = (event) => {
     this.setState({
-      name: event.target.value,
+      name: event.target.value, // muốn thay đỏi cái j gắn cái này vô
     });
   };
 
@@ -20,6 +20,7 @@ class MyComponent extends React.Component {
   render() {
     // let name = "Khanh";
     // //dùng {} để sử dụng javascritp trong JSX html
+    console.log(">> check call render ", this.state);
 
     return (
       <>
