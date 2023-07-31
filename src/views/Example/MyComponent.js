@@ -1,5 +1,5 @@
 import React from "react";
-
+import ChildComponents from "./ChildComponents";
 class MyComponent extends React.Component {
   state = {
     firstName: "",
@@ -46,6 +46,8 @@ class MyComponent extends React.Component {
           <br />
           <input type="submit" onClick={(event) => this.handleSubmit(event)} />
         </form>{" "}
+        <ChildComponents name={"child one"} age={"23"} />
+        {/* đây là 1 child của nesting */}
       </>
     );
   }
