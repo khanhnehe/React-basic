@@ -1,40 +1,71 @@
 import React from "react";
 
 class ChildComponents extends React.Component {
+  // #QUANG TRỌNG
   state = {
-    firstName: "",
-    lastName: "",
+    showJobs: false,
   };
 
-  handleChangFirstName = (event) => {
+  handleShowHide = () => {
     this.setState({
-      firstName: event.target.value,
+      // dùng "!" để phủ định nếu showJobs=false =>  thành true và ngược lại
+      showJobs: !this.state.showJobs,
     });
-  };
-  handleChangLastName = (event) => {
-    this.setState({
-      lastName: event.target.value,
-    });
-  };
-
-  handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(">> check data input: ", this.state);
   };
 
   render() {
-    console.log("check props: ", this.props);
-    // let name = this.props.name;
     // let age = this.props.age; thay bằng cái ở dưới
-    let { name, age } = this.props;
+    let { arrJobs } = this.props;
+    let { showJobs } = this.state;
     return (
       <>
-        <div>
-          child component name: {name} - {age}
-        </div>
+        {/* dùng điều kiện false=> khi mà nó bằn false thì ta in ra cái div show */}
+        {showJobs === false && (
+          <div>
+            <button onClick={() => this.handleShowHide()}>Show</button>
+          </div>
+        )}
+        {/* dùng điều kiện ở đây => nếu biến showJobs == true -> sẽ in ra phần sau dấu "&&" */}
+        {showJobs && (
+          <>
+            <div className="job-lits">
+              {/* dùng vòng lặp */}
+              {arrJobs.map((item, index) => {
+                return (
+                  <div key={item.id}>
+                    {item.title} {item.salary}
+                  </div>
+                );
+              })}
+            </div>
+            <div>
+              <button onClick={() => this.handleShowHide()}>Hide</button>
+            </div>
+          </>
+        )}
       </>
     );
   }
 }
+
+// const ChildComponents = (props) => {
+//   let { arrJobs } = props;
+//   return (
+//     <>
+//       <div className="job-lits">
+//         {/* dùng vòng lặp */}
+//         {arrJobs.map((item, index) => {
+//           if (item.salary >= 500000) {
+//             return (
+//               <div key={item.id}>
+//                 {item.title} {item.salary} $
+//               </div>
+//             );
+//           }
+//         })}
+//       </div>
+//     </>
+//   );
+// };
 
 export default ChildComponents; // chỉ trả ra 1 thứ
