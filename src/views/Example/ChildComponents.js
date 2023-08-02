@@ -5,28 +5,27 @@ class ChildComponents extends React.Component {
   state = {
     showJobs: false,
   };
-
   handleShowHide = () => {
     this.setState({
       // dùng "!" để phủ định nếu showJobs=false =>  thành true và ngược lại
       showJobs: !this.state.showJobs,
     });
   };
-
   render() {
     // let age = this.props.age; thay bằng cái ở dưới
     let { arrJobs } = this.props;
     let { showJobs } = this.state;
+    // điều kiện "?" so sánh showJobs-> nếu phần tử này đúng nó sẽ lấy cái đầu tiên, sai thì lấy cái thứ 2
+    let check = showJobs === true ? "showJobs = true" : "showJobs = false";
+    console.log(">>check conditional: ", check);
     return (
       <>
         {/* dùng điều kiện false=> khi mà nó bằn false thì ta in ra cái div show */}
-        {showJobs === false && (
+        {showJobs === false ? (
           <div>
             <button onClick={() => this.handleShowHide()}>Show</button>
           </div>
-        )}
-        {/* dùng điều kiện ở đây => nếu biến showJobs == true -> sẽ in ra phần sau dấu "&&" */}
-        {showJobs && (
+        ) : (
           <>
             <div className="job-lits">
               {/* dùng vòng lặp */}
@@ -36,7 +35,7 @@ class ChildComponents extends React.Component {
                     {item.title} {item.salary}
                   </div>
                 );
-              })}
+              })}{" "}
             </div>
             <div>
               <button onClick={() => this.handleShowHide()}>Hide</button>
