@@ -13,15 +13,28 @@ class MyComponent extends React.Component {
     ],
   };
 
-  //truyền function này xuống AddComponent
-  // cập nhật lại biến arrJobs
   addNewJob = (job) => {
     console.log(
       "check job from parent , coi thử con truyền đc lên cha chưa: ",
       job
     );
-    // let currentJobs = this.state.addNewJob; cách ngắn hơn ở dưới
+    // let currenJob = this.state.arrJobs; //cách viết dài hơn
+    // currenJob.push(job); //cách viết dài hơn
     this.setState({ arrJobs: [...this.state.arrJobs, job] });
+
+    // this.setState({
+    //   arrJobs: currenJob,
+    // }); //cách viết dài hơn
+  };
+
+  deleteAJob = (job) => {
+    // cách dễ trước
+    let currenJob = this.state.arrJobs;
+    currenJob = currenJob.filter((item) => item.id !== job.id);
+    // điều kiện lọc all các phần tư trong ((item) và trả lại => phần tử nào có id khác với job mà ta trả lên
+    this.setState({
+      arrJobs: currenJob,
+    });
   };
 
   render() {
@@ -30,7 +43,11 @@ class MyComponent extends React.Component {
       <>
         <AddComponent addNewJob={this.addNewJob} />
 
-        <ChildComponents arrJobs={this.state.arrJobs} />
+        <ChildComponents
+          arrJobs={this.state.arrJobs}
+          deleteAJob={this.deleteAJob}
+        />
+
         {/* đây là 1 child của nesting */}
       </>
     );
