@@ -13,11 +13,22 @@ class MyComponent extends React.Component {
     ],
   };
 
+  //truyền function này xuống AddComponent
+  // cập nhật lại biến arrJobs
+  addNewJob = (job) => {
+    console.log(
+      "check job from parent , coi thử con truyền đc lên cha chưa: ",
+      job
+    );
+    // let currentJobs = this.state.addNewJob; cách ngắn hơn ở dưới
+    this.setState({ arrJobs: [...this.state.arrJobs, job] });
+  };
+
   render() {
     console.log("check call render: ", this.state);
     return (
       <>
-        <AddComponent />
+        <AddComponent addNewJob={this.addNewJob} />
 
         <ChildComponents arrJobs={this.state.arrJobs} />
         {/* đây là 1 child của nesting */}

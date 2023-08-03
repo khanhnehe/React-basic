@@ -2,12 +2,12 @@ import React from "react";
 // nhơ qua MyComponent định nghĩa vì đó là nơi ta muốn làm con của nó
 class AddComponent extends React.Component {
   state = {
-    titleJob: "",
+    title: "",
     salary: "",
   };
   handleChangTitleJob = (event) => {
     this.setState({
-      titleJob: event.target.value,
+      title: event.target.value,
     });
   };
   handleChangSalary = (event) => {
@@ -17,16 +17,30 @@ class AddComponent extends React.Component {
   };
   handleSubmit = (event) => {
     event.preventDefault();
+    if (!this.state.title || !this.state.salary) {
+      alert("Missing required params");
+      return; // nếu title hoặc salary ko đc điền vào sẽ in ra dong ""Missing required params"
+    }
     console.log(">> check data input: ", this.state);
+    this.props.addNewJob({
+      id: Math.floor(Math.random() * 1001),
+      title: this.state.title,
+      salary: this.state.salary,
+    });
+
+    this.setState({
+      title: "",
+      salary: "", // trả về trông nếu điều kiện ở trên khia xét xong
+    });
   };
   render() {
     return (
       <form>
-        <label htmlFor="fname">titleJob:</label>
+        <label htmlFor="fname">title:</label>
         <br />
         <input
           type="text"
-          value={this.state.titleJob}
+          value={this.state.title}
           onChange={(event) => this.handleChangTitleJob(event)}
         />
         <br />
