@@ -37,18 +37,29 @@ class MyComponent extends React.Component {
     });
   };
 
+  componentDidUpdate(prevProps, prevState) {
+    console.log(
+      ">> run didupdate: ",
+      "prev state: ",
+      prevState,
+      " current state: ",
+      this.state
+    );
+  }
+  componentDidMount() {
+    console.log(">> run component did mount");
+  }
+
   render() {
     console.log("check call render: ", this.state);
     return (
       <>
         <AddComponent addNewJob={this.addNewJob} />
-
         <ChildComponents
           arrJobs={this.state.arrJobs}
           deleteAJob={this.deleteAJob}
-        />
-
-        {/* đây là 1 child của nesting */}
+        />{" "}
+        {/* {/ * đây là 1 child của nesting * /}{" "} */}
       </>
     );
   }

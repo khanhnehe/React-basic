@@ -1,6 +1,9 @@
 import logo from "./logo.svg";
 import "./App.scss";
 import MyComponent from "./Example/MyComponent";
+import ListTodo from "./Todos/ListTodo";
+import { ToastContainer, toast } from "react-toastify"; // định nghĩa thêm bên listTodo và addtodo
+import "react-toastify/dist/ReactToastify.css";
 
 // 2 components: class component / function component ( function, arrow)
 // JSX
@@ -12,7 +15,7 @@ const App = () => {
 
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello world with React khánh nè he</p>
+        <p>Simple TODO apps with Khanh</p>
         {/* <a
           className="App-link"
           href="https://reactjs.org"
@@ -21,8 +24,21 @@ const App = () => {
         >
           Learn React
         </a> */}
-        <MyComponent />
+        {/* <MyComponent /> */}
+        <ListTodo />
       </header>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   );
 };

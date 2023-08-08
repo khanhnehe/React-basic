@@ -1,5 +1,6 @@
 import React from "react";
 // nhơ qua MyComponent định nghĩa vì đó là nơi ta muốn làm con của nó
+import "./demo.scss";
 class AddComponent extends React.Component {
   state = {
     title: "",
@@ -36,16 +37,14 @@ class AddComponent extends React.Component {
   render() {
     return (
       <form>
-        <label htmlFor="fname">title:</label>
-        <br />
+        <label htmlFor="fname"> title: </label> <br />
         <input
           type="text"
           value={this.state.title}
           onChange={(event) => this.handleChangTitleJob(event)}
         />
         <br />
-        <label htmlFor="lname">salary:</label>
-        <br />
+        <label htmlFor="lname"> salary: </label> <br />
         <input
           type="text"
           value={this.state.salary}
@@ -53,7 +52,11 @@ class AddComponent extends React.Component {
         />
         <br />
         <br />
-        <input type="submit" onClick={(event) => this.handleSubmit(event)} />
+        <input
+          className="btn-submit"
+          type="submit"
+          onClick={(event) => this.handleSubmit(event)}
+        />
       </form>
     );
   }

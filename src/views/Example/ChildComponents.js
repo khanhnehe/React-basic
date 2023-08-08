@@ -1,4 +1,5 @@
 import React from "react";
+import "./demo.scss";
 
 class ChildComponents extends React.Component {
   // #QUANG TRỌNG
@@ -28,7 +29,9 @@ class ChildComponents extends React.Component {
         {/* dùng điều kiện false=> khi mà nó bằn false thì ta in ra cái div show */}
         {showJobs === false ? (
           <div>
-            <button onClick={() => this.handleShowHide()}>Show</button>
+            <button className="btn-show" onClick={() => this.handleShowHide()}>
+              Show
+            </button>
           </div>
         ) : (
           <>
