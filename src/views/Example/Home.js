@@ -1,6 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router";
 import Color from "../HOC/Color";
+import gojo from "../../assets/images/gojo.png";
 
 class Home extends React.Component {
   //componentDiMount là 1 live cycle (vòng đời) của thằng react
@@ -19,6 +20,9 @@ class Home extends React.Component {
     return (
       <>
         <div>Hello Home đây hãy coi ta như là 1 trang chủ</div>
+        <div>
+          <img src={gojo} style={{ with: "200px", marginTop: "10px" }} />
+        </div>
       </>
     );
   }
