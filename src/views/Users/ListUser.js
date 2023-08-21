@@ -2,6 +2,8 @@ import React from "react";
 import axios from "axios";
 import "./ListUser.scss";
 
+// muốn sang trang mới phải dùng cái này
+import { withRouter } from "react-router-dom";
 class ListUser extends React.Component {
   state = {
     listUsers: [],
@@ -17,6 +19,12 @@ class ListUser extends React.Component {
       listUsers: res && res.data && res.data.data ? res.data.data : [],
     });
   }
+
+  handleViewDetailUser = (user) => {
+    //push(đẩy đến trang user) và đến id của nó mà ta đx định nghĩa bên App
+    this.props.history.push(`/user/${user.id}`);
+  };
+
   render() {
     //lấy listUsers ra từ trong cái state của thằng react của we ra
     let { listUsers } = this.state;
@@ -33,10 +41,12 @@ class ListUser extends React.Component {
               listUsers.length > 0 &&
               listUsers.map((item, index) => {
                 return (
-                  <div className="child" key={item.id}>
-                    <span>
-                      {index + 1} - {item.first_name} {item.last_name}
-                    </span>
+                  <div
+                    className="child"
+                    key={item.id}
+                    onClick={() => this.handleViewDetailUser(item)}
+                  >
+                    {index + 1} - {item.first_name} {item.last_name}
                   </div>
                 );
               })}
@@ -47,4 +57,4 @@ class ListUser extends React.Component {
   }
 }
 
-export default ListUser;
+export default withRouter(ListUser);

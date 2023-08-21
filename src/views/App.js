@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Nav from "./Nav/Nav";
 import Home from "./Example/Home";
 import ListUser from "./Users/ListUser";
+import DetailUser from "./Users/DetailUser";
 
 // 2 components: class component / function component ( function, arrow)
 // JSX
@@ -39,8 +40,12 @@ const App = () => {
             <Route path="/about">
               <MyComponent />
             </Route>
-            <Route path="/user">
+            {/* muốn chính xác thêm exact tại về 2 cái user của we nó giống nahu cân ~theem excat*/}
+            <Route path="/user" exact>
               <ListUser />
+            </Route>
+            <Route path="/user/:id">
+              <DetailUser />
             </Route>
           </Switch>
         </header>
