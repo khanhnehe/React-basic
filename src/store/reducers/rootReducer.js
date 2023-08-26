@@ -11,6 +11,10 @@ const initState = {
       id: 2,
       name: "dep",
     },
+    {
+      id: 3,
+      name: "thêm cái thứ 3 check thử",
+    },
   ],
 };
 
